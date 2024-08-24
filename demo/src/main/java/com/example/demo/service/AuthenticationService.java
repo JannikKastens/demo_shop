@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.demo.service;
 
 import com.example.demo.exception.UserAlreadyExistsException;
 import com.example.demo.model.AuthenticationRequest;
