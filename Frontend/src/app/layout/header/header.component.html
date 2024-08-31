@@ -1,1 +1,14 @@
-<p>header works!</p>
+<header>
+  <div class="logo">
+    <a routerLink="/">Demo Shop</a>
+  </div>
+  <nav>
+    <ul>
+      <li *ngFor="let item of navItems">
+        <a [routerLink]="item.path" routerLinkActive="active">{{
+          item.label
+        }}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
