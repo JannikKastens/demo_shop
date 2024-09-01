@@ -5,6 +5,7 @@ import {
   ProductService,
   Product,
 } from '../../../core/services/product.service';
+import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,14 +17,17 @@ import {
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]> = new Observable<Product[]>();
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.products$ = this.productService.getProducts();
   }
 
   addToCart(product: Product): void {
-    // Implement add to cart logic here
-    console.log('Adding to cart:', product);
+    this.cartService.addToCart(product);
+    console.log('Added to cart:', product);
   }
 }
