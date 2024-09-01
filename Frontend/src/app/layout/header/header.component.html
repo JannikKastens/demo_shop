@@ -1,14 +1,32 @@
-<header>
-  <div class="logo">
-    <a routerLink="/">Demo Shop</a>
+<header class="header">
+  <div class="header__container">
+    <div class="header__logo">
+      <a routerLink="/">Demo Shop</a>
+    </div>
+    <button
+      class="header__menu-toggle"
+      (click)="toggleMobileMenu()"
+      aria-label="Toggle menu"
+    >
+      <img
+        src="/assets/burger-menu-svgrepo-com.svg"
+        alt="Menu"
+        class="header__menu-icon"
+      />
+    </button>
+    <nav class="header__nav" [class.header__nav--open]="isMobileMenuOpen">
+      <ul class="header__nav-list">
+        <li *ngFor="let item of navItems" class="header__nav-item">
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="active"
+            class="header__nav-link"
+            (click)="closeMobileMenu()"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
-  <nav>
-    <ul>
-      <li *ngFor="let item of navItems">
-        <a [routerLink]="item.path" routerLinkActive="active">{{
-          item.label
-        }}</a>
-      </li>
-    </ul>
-  </nav>
 </header>

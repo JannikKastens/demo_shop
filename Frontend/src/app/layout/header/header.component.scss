@@ -1,58 +1,111 @@
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+.header {
   background-color: #f8f9fa;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 
-  .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-  }
-
-  nav ul {
+  &__container {
     display: flex;
-    list-style-type: none;
-    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    a {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+    }
+  }
+
+  &__menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  nav li {
-    margin-left: 1rem;
+  &__menu-icon {
+    width: 24px;
+    height: 24px;
+    color: #333; // This sets the color of the SVG
   }
 
-  nav a {
+  &__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &--open {
+      display: block;
+    }
+  }
+
+  &__nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__nav-item {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav-link {
     color: #333;
     text-decoration: none;
-    padding: 0.5rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    font-size: 1.1rem;
+    display: block;
+    padding: 0.5rem 0;
 
     &:hover,
     &.active {
-      background-color: #e9ecef;
+      color: #007bff;
     }
   }
 
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
+  @media (min-width: 768px) {
+    &__menu-toggle {
+      display: none;
     }
 
-    nav {
-      margin-top: 1rem;
+    &__nav {
+      position: static;
+      display: block;
+      padding: 0;
+      box-shadow: none;
     }
 
-    nav ul {
-      flex-direction: column;
-      align-items: center;
+    &__nav-list {
+      display: flex;
     }
 
-    nav li {
-      margin: 0.5rem 0;
+    &__nav-item {
+      margin-bottom: 0;
+      margin-left: 1.5rem;
+    }
+
+    &__nav-link {
+      padding: 0;
     }
   }
 }

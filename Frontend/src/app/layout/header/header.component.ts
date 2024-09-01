@@ -1,19 +1,28 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { NgFor, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgFor, RouterLink, RouterLinkActive],
+  imports: [NgFor, NgClass, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   navItems = [
-    { path: '/', label: 'Home' },
     { path: '/products', label: 'Products' },
     { path: '/cart', label: 'Cart' },
     { path: '/user-profile', label: 'Profile' },
   ];
+
+  isMobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+  }
 }
